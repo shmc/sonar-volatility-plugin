@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>org.codehaus.sonar-plugins</groupId>
+		<artifactId>parent</artifactId>
+		<version>10</version>
+		<relativePath>../parent</relativePath>
+	</parent>
+	
+	<groupId>net.peakplatform</groupId>
+	<artifactId>sonar-volatility-plugin</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>sonar-plugin</packaging>
+
+	<name>Sonar Volatility Plugin</name>
+	<description>Provide a volatility analysis.</description>
+
+	<url>http://leandotech.peakplatform.net/projects/${project.artifactId}/</url>
+
+	<inceptionYear>2011</inceptionYear>
+
+	<organization>
+		<name>LeanDo Technologies</name>
+		<url>http://www.leandotech.com</url>
+	</organization>
+
+	<developers>
+		<developer>
+			<id>pgama</id>
+			<name>Pedro Gama</name>
+			<roles>
+				<role>Manager</role>
+			</roles>
+		</developer>
+		<developer>
+			<id>scorreia</id>
+			<name>Sérgio Correia</name>
+			<roles>
+				<role>Developer</role>
+			</roles>
+		</developer>
+	</developers>
+	
+	<issueManagement>
+		<system>JiraStudio</system>
+		<url>https://leandotech.jira.com/</url>
+	</issueManagement>
+
+	<ciManagement>
+		<system>Hudson</system>
+		<url>http://leandotech.peakplatform.net/hudson/job/Sonar_Volatility_Plugin/</url>
+	</ciManagement>
+
+	<licenses>
+		<license>
+			<name>GNU LGPL 3</name>
+			<url>http://www.gnu.org/licenses/lgpl.txt</url>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>
+	
+
+	<properties>
+		<license.mailto>mis@leandotech.com</license.mailto>
+	
+		<jdk.min.version>1.5</jdk.min.version>
+		<sonar.buildVersion>2.8</sonar.buildVersion>
+		<sonar.pluginName>SCM Activity</sonar.pluginName>
+		<sonar.pluginClass>org.sonar.plugins.scmactivity.ScmActivityPlugin</sonar.pluginClass>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.codehaus.sonar-plugins.scm-activity</groupId>
+			<artifactId>maven-scm-ext</artifactId>
+			<version>1.2</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.codehaus.sonar</groupId>
+			<artifactId>sonar-plugin-api</artifactId>
+			<version>${sonar.buildVersion}</version>
+			<scope>provided</scope>
+			<exclusions>
+				<exclusion>
+					<groupId>org.codehaus.plexus</groupId>
+					<artifactId>plexus-utils</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.maven</groupId>
+			<artifactId>maven-project</artifactId>
+			<version>2.0.9</version>
+			<scope>provided</scope>
+			<exclusions>
+				<exclusion>
+					<groupId>org.codehaus.plexus</groupId>
+					<artifactId>plexus-container-default</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.codehaus.plexus</groupId>
+					<artifactId>plexus-utils</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+		<!-- unit tests -->
+		<dependency>
+			<groupId>org.codehaus.sonar</groupId>
+			<artifactId>sonar-testing-harness</artifactId>
+			<version>${sonar.buildVersion}</version>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>joda-time</groupId>
+			<artifactId>joda-time</artifactId>
+			<version>2.0</version>
+		</dependency>
+
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.codehaus.sonar</groupId>
+				<artifactId>sonar-packaging-maven-plugin</artifactId>
+				<configuration>
+					<useChildFirstClassLoader>true</useChildFirstClassLoader>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+	
+	<distributionManagement>
+		<snapshotRepository>
+			<id>leandotech-component-snapshots</id>
+			<url>http://leandotech.peakplatform.net/nexus/content/repositories/component-snapshots</url>
+		</snapshotRepository>
+		<repository>
+			<id>leandotech-component-releases</id>
+			<url>http://leandotech.peakplatform.net/nexus/content/repositories/component-releases</url>
+		</repository>
+		<site>
+			<id>leandotech.peakplatform.net</id>
+			<url>file:/var/www/projects/${project.artifactId}/</url>
+		</site>
+	</distributionManagement>
+
+	<scm>
+		<connection>scm:svn:https://leandotech.jira.com/svn/SONARVOLATITLITYPLUGIN</connection>
+		<developerConnection>scm:svn:https://leandotech.jira.com/svn/SONARVOLATITLITYPLUGIN</developerConnection>
+		<tag>HEAD</tag>
+		<url>https://leandotech.jira.com/svn/SONARSVOLATITLITYPLUGIN</url>
+	</scm>	
+</project>
